@@ -39,10 +39,10 @@ public abstract class Spider {
 
 	public String getContent(String doc) throws IOException, SAXException,
 			TikaException {
-		BodyContentHandler handler = new BodyContentHandler();
+		BodyContentHandler handler = new BodyContentHandler(-1);
 		Metadata metadata = new Metadata();
 		InputStream inputstream = new ByteArrayInputStream(
-				doc.getBytes("UTF-8"));
+				doc.getBytes());
 		ParseContext pcontext = new ParseContext();
 		HtmlParser parser = new HtmlParser();
 		parser.parse(inputstream, handler, metadata, pcontext);
